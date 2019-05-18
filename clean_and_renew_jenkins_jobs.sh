@@ -29,7 +29,7 @@ if [[ -d jenkins_jobs ]];then echo "->  Repo cloning worked with success";else e
 
 cd ${JENKINS_JOBS}/jenkins_jobs
 sudo cp -r * ${JENKINS_JOBS}
-
+cd ${JENKINS_JOBS}
 for jobs in $(ls -1 ${JENKINS_JOBS} | grep -v jenkins_jobs)
 do sudo chown -R jenkins:jenkins ${jobs}
 done
