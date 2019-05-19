@@ -22,6 +22,11 @@ sudo docker rm $(sudo docker ps -a -q) > /dev/null
 if [[ $? -eq 0 ]];then echo "->  All stoped containers were removed";else echo "ERROR OCCURED, run manually the command: sudo docker rm \$(sudo docker ps -a -q)";exit 1;fi
 fi
 
+echo "### PRUNE ALL CONTAINERS ###"
+sudo docker container prune --force
+echo "->  Container pruning done ###"
+
+
 echo "### DELETE ALL DOCKER IMAGES ###"
 
 NO_DOCKER_IMAGES=`sudo docker images -q | wc -l`
@@ -33,9 +38,6 @@ sudo docker rmi $(sudo docker images -q) > /dev/null
 if [[ $? -eq 0 ]];then echo "->  All docker images were removed";else echo "ERROR OCCURED,run manually the command: sudo docker images -q";exit 1;fi
 fi
 
-echo "### PRUNE ALL CONTAINERS ###"
-sudo docker container prune --force
-echo "->  Container pruning done ###"
 echo "### PRUNE ALL DOCKER IMAGES ###"
 sudo docker image prune --force
 echo "->  Image pruning done"
