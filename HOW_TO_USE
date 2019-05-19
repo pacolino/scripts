@@ -1,0 +1,13 @@
+1. GENERATE HTTP REQUESTS TO THE APACHE SERVER(SUCCESS and ERRORS - final scope to use the apache log for monitoring)
+
+go to user home directory
+cd scripts
+
+-> start:
+/generate_webpage_requests.sh &
+-> check apache log:
+sudo docker exec -it 4e7651a2d68a tail -f /var/log/apache2/access.log   (where 4e7651a2d68a is the apache container id)
+-> stop:
+jobs
+fg 1
+ctrl + c
