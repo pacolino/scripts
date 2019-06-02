@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  php:
+    build: './docker_php/server_php/'
+    networks:
+      - backend
+    volumes:
+      - ./shared_dir/apache/apps-shared_dir-apache/:/var/www/html/
+  apache:
+    build: './docker_apache/server_apache/'
+    depends_on:
+      - php
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./shared_dir/apache/apps-shared_dir-apache/:/var/www/html/
+  mysql:
+    image: mysql:5.6.40
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+networks:
+  frontend:
+  backend:
