@@ -24,7 +24,7 @@ if [[ $NO_JOBS -eq 1 ]];then echo "->  No jobs remaining";else echo "-> ERROR OC
 ### CLONE ENTIRE REPO OF JENKINS JOBS ###
 
 echo "CLONE JENKINS JOBS REPO"
-sudo git clone https://github.com/alexandraiosim/jenkins_jobs.git > /dev/null
+sudo git clone https://github.com/pacolino/jenkins_jobs.git > /dev/null
 if [[ -d jenkins_jobs ]];then echo "->  Repo cloning worked with success";else echo "-> ERROR OCCURED";exit 1;fi
 
 cd ${JENKINS_JOBS}/jenkins_jobs
